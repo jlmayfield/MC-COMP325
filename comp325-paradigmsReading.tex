@@ -2,6 +2,7 @@
 \usepackage{amsmath}
 \usepackage{setspace}
 \usepackage{hyperref}
+\usepackage{natbib}
 
 \setlength{\textheight}{9in} \setlength{\topmargin}{-.5in}
 \setlength{\textwidth}{6.5in} \setlength{\oddsidemargin}{0in}
@@ -14,9 +15,18 @@
 \begin{document}
 \maketitle
 
+\section{Case Studies}
+
+The C language and the Lisp family of languages are some of the most famous, influential, widely known, and used languages in computing history.  The story of their early development is documented in Richie's \textit{The Development of the C Language} \citep{ritchiedevelopment} and McCarthy's \textit{History of Lisp} \citep{mccarthyhistory}.  First, go look up these authors and their history.   Your goal for these readings is simple: \textit{understand the context in which the languages were built, the goals of the designers, and the problems faced in language design and implementation}. Imagine you wan to make your mark in programming languages, what can and should you learn from the stories of LISP and C? 
+
+\section{Language Design and Community}
+
+Guy Steele is a big name in the Programming Languages community.  Go look up him up.  Back in 1998 he gave the keynote speech at OOPSLA (go look that up!) and that speech has become a bit of a rallying cry for a segment of the language design community.  You can watch it here: \url{http://www.youtube.com/watch?v=_ahvzDzKdB0}. You've also been given a written variation of the talk to read\citep{steelegrowing} Think about Steele's comments and ideas in comparison to those of Ritchie and McCarthy. What does he add to the conversation? What does he reinforce? 
+
+
 \section{Paradigms}
 
-To get you thinking about Programming Languages, read Robert Floyd's Turing Lecture \textit{The Paradigms of Programming} and the first three sections of Peter Van Roy's \textit{Programming Paradigms for Dummies: What Every Programmer Should Know}.  First things first: look up the author's and find out who they are and what their credentials are.  
+Now read Robert Floyd's Turing Lecture \textit{The Paradigms of Programming}\citep{floydparadigms} and the first three sections of Peter Van Roy's \textit{Programming Paradigms for Dummies: What Every Programmer Should Know}\citep{vanroyprogramming}.  Again, look up the author's and find out who they are and what their credentials are.  
 
 Now, as you read look for insight on the following questions:
 \begin{enumerate}
@@ -24,33 +34,34 @@ Now, as you read look for insight on the following questions:
 \begin{itemize}
 \item list concrete examples
 \item list the authors' definitions. (compare and contrast)
-\item What is their purpose? 
-\item From where do they originate? 
+\item What is the purpose of a paradigm? 
+\item From where do paradigms originate? 
 \item To what extent is the distinction technical vs. social?
 \item \textbf{Definition in your own words}
 \end{itemize}
-\item \textit{What's the relationship between programming languages and paradigms?}
-\begin{itemize}
-\item practice vs theory
-\end{itemize}
+\item \textit{What's the relationship (in theory and practice) between programming languages and paradigms?}
 \item \textit{How can programmers and program language designers invent/discover new paradigms and programming concepts?}
 \end{enumerate}
 
-\section{Language Design and Community}
 
-Guy Steele is a big name in the Programming Languages community.  Go look up him up.  Now, back in 1998 he gave the keynote speech at OOPSLA (go look that up!) and that speech has becoming a bit of a rallying cry for a segment of the language design community.  Watch it here: \url{http://www.youtube.com/watch?v=_ahvzDzKdB0}. You've also been given a transcript of the talk. Think about Steele's comments in comparison to that of Floyd's and Van Roy's.
-
-
-\section{Case Studies}
-
-The C language and the Lisp family of languages are some of the most famous, widely known, and used languages in computing history.  The story of their early development is documented in Richie's \textit{The Development of the C Language} and McCarthy's \textit{History of Lisp}.  As always, go look up the authors.  Your goal for the reading of these papers is simple: \textit{understand the context in which the languages were built and the goals of the designers}. Once you've done that, \textit{compare and contrast what you've found with the commentary of Floyd, Van Roy, and Steele}.  
-
-\section{The Response}
+\section{The Assignments}
 
 \begin{center}
-\textbf{Due Friday }
+\begin{enumerate}
+\item Reading and Discussion
+\begin{enumerate}
+\item \textit{For Wednesday 8/26} Read the McCarthy and Ritchie papers. Come ready to compare and contrast the evolution of these languages and the goals and challenges of Language design and implementation. 
+\item \textit{For Friday 8/28} Read/Watch Steele's OOPSLA talk and be ready to discuss it and compare his ideas to those of Ritchie and McCarthy.
+\item \textit{For Monday 8/31} Read Floyd and Van Roy. Be ready to discuss the prompts about Paradigms.
+\end{enumerate} 
+\item Written Assignment \textit{Due Wednesday 9/2}
+\newline 
+Write a one to two page reflection on the readings, our discussions, your experiences with programming languages, and your expectations for the remainder of the course. Try to draw some kind of consistent thread between everything you've read and done.  Your goal is not to answer to the above prompts directly but look for some deeper insight that comes from the answers you've found and the comparisons you've drawn.
+\end{enumerate}
 \end{center}
 
-Once you've completed the readings and viewings, write a one page response to what you've seen and read.  Using the above prompts as a guide, try to draw some kind of consistent thread between everything.  Your goal is not to answer to the questions directly but look for some deeper insight that comes from the answers you've found and the comparisons you've drawn.
+
+\bibliographystyle{ACM-Reference-Format-Journals}
+\bibliography{comp325.bib}
 
 \end{document}

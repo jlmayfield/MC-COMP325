@@ -25,44 +25,46 @@
 \item \textit{Email: } lmayfield at MONMOUTHCOLLEGE dot EDU
 \item \textit{Office Hours: } By Appointment
 \end{itemize}
+\item \textbf{Website: } \url{https://jlmayfield.github.io/MC-COMP325}
 \item \textbf{Credits: } 1 course credit
 \end{itemize}
 \emph{Note: Parts of this Syllabus are subject to change based on specific class needs.}
 
 \section{Texts}
 %insert text #1
-
-Krishnamurthi, Shriram. \textit{Programming Languages Application and Interpretation}. Second Edition. Creative Commons. 2012. 
+Krishnamurthi, Shriram. \textit{Programming and Programming Languages}. 2014. 
 \begin{itemize}
-\item Main Site: \url{http://www.cs.brown.edu/~sk/Publications/Books/ProgLangs/2007-04-26/}
-\item Book (HTML): \url{http://cs.brown.edu/courses/cs173/2012/book/}
+\item Book (HTML): \url{http://papl.cs.brown.edu/2014/}
 \end{itemize}
 
 \vspace{.2in} 
 
 %insert text #2 
 \noindent
-Krishnamurthi, Shriram. \textit{Programming and Programming Languages}. 2014. 
+Krishnamurthi, Shriram. \textit{Programming Languages Application and Interpretation}. Second Edition. Creative Commons. 2012. 
 \begin{itemize}
-\item Book (HTML): \url{http://papl.cs.brown.edu/2014/}
+\item Main Site: \url{http://www.cs.brown.edu/~sk/Publications/Books/ProgLangs/2007-04-26/}
+\item Book (HTML): \url{http://cs.brown.edu/courses/cs173/2012/book/}
 \end{itemize}
+
 
 \section{Programming Language and Environment}
 
-We'll be using the \textit{Racket} programming language and DrRacket development environment in this course. The College lab computers are already loaded with the latest version of the DrRacket programming environment.    
+We'll be diving in with the \textit{Pyret} language that accompanies PAPL. Pyret has an in-browser development environment and so may be used on any computer with a (modern) web-browser.
 \begin{itemize}
-\item \url{http://www.racket-lang.org}
+\item \url{http://www.pyret.org/}
+\item Style Guide: \url{http://cs.brown.edu/courses/cs173/2013/Pyret_Style_Guide.html}
 \end{itemize}
 
 \noindent
-Alternatively, we may use the \textit{Pyret} language that accompanies the second text. Pyret has an in-browser development environment and so may be used anywhere with a web-browser.
+We might, from time to time, look at some \textit{Racket} as its used in PLAI.  If you need or want to update your DrRacket installation, here's the link.
 \begin{itemize}
-\item \url{http://www.pyret.org/}
+\item \url{http://www.racket-lang.org}
+\item Style Guide: \url{http://cs.brown.edu/courses/cs017/content/docs/racket-style.pdf}
 \end{itemize}
 
 \section{Description and Content}
-This course is an exploration of modern programming languages through the study and implementation of  interpreters for key language features.  By implementing small languages with common PL features, students expand their skill set with both practical and theoretical knowledge.  To understand programming languages is to understand programming and computation as a whole.  A programming language is how we describe a computational process and study of the languages themselves helps to shed light on the inner workings of a computation.
-In addition to implementing some key programming language features, students will also experiment with modern, working programming languages which utilize these features.   
+This course is an exploration of modern programming languages through the study and implementation of  interpreters for fundamental language features.  By implementing small languages with common PL features, students expand their skill set with both practical and theoretical knowledge.  To understand programming languages is to understand programming and computation as a whole.  A programming language is how we describe a computational process and study of the languages themselves helps to shed light on the inner workings of a computation.
 
 \subsection{Content}
 
@@ -71,13 +73,14 @@ This course will, for the most part, follow the text.  Topics to be covered will
 \item Principles of Language Design and Implementation 
 \item Arithmetic Expressions
 \item Conditionals
-\item Functions
+\item Functions and Procedures
 \item Records
-\item Static Types
 \item State and Mutation
-\item Objects
 \item Garbage Collection
-\item Laziness
+\item Types
+\item Objects
+\item Parametrized Types 
+\item Type Inference
 \end{itemize}
 
 \section{Expectations and Policies}
@@ -139,22 +142,24 @@ You are always welcome to challenge a grade that you feel is unfair or calculate
 % number of/details on midterms, finals, project, homeworks, quizes, etc
 
 \begin{itemize}
-\item 5 Homework Assignments
+\item 2-3 Homework Assignments 
+\item 5-7 Interpreters
 \item 1 Paper with Presentation
 \item 1 Final
 \item 1 Midterm
-\item 5 Quizzes
+\item 3 Quizzes
 \end{itemize}
 
 \subsection{Grade Weights}
 
 Your final grade is based on a weighted average of particular assignment categories.  You should be able to estimate your current grade based on your scores and these weights.  You may always visit the instructor \textit{outside of class time} to discuss your current standing.  
 \begin{itemize}
-\item Homework 15\%
+\item Homework 5\%
+\item Interpreters 30\%
 \item Paper + Presentation 20\%
 \item Final 15\%
 \item Midterm 10\%
-\item Quizzes 30\%
+\item Quizzes 10\%
 \item Participation 10\%
 % add more if needed
 \end{itemize} 
@@ -166,12 +171,11 @@ The weekly workload for this course will vary by student but on average should b
 \begin{tabular}{|l|l|l|}
 \hline
 Lectures+Final &           & 3 hours/week \\ 
-Homework & 30 hours        & 2 hours/week \\
+Homework/Interpreters & 60 hours  & 4 hours/week \\
 Exam Study Time & 8 hours  & 0.5 hours/week \\ 
-Quiz Study Time & 10 hours & 0.6 hours/week \\
-Paper/Presentation & 24 hours & 1.6 hours/week \\
-Exercises &                & 2.3 hours/week \\
-Reading+Unstructured Study & & 1.5 hours/week \\
+Quiz Study Time & 8 hours & 0.5 hours/week \\
+Paper/Presentation & 22.5 hours & 1.5 hours/week \\
+Reading+Unstructured Study & & 2 hours/week \\
 \hline
 & & 11.5 hours/week \\ 
 \hline
@@ -190,33 +194,33 @@ Week & Dates & Assignments \\
 \hline
 1 & 8/25 - 8/28 &  \\
 \hline 
-2 & 8/31 - 9/4 &   \\
+2 & 8/31 - 9/4 &  Written Homework Due  \\
 \hline
-3 & 9/7 - 9/11 &   \\
+3 & 9/7 - 9/11 &   Interp. 1 \\
 \hline
-4 & 9/14 - 9/18 &   \\
+4 & 9/14 - 9/18 &   Quiz 1. \\
 \hline
-5 & 9/21 - 9/25 &  \\
+5 & 9/21 - 9/25 &  Interp. 2\\
 \hline
 6 & 9/28 - 10/2 & \\
 \hline
-7 & 10/5 - 10/9  &  \\
+7 & 10/5 - 10/9  &  Interp 3. Paper Anno. Bib. Hwk. \\
 \hline 
-8 & 10/12 - 10/15 &  FALL BREAK (F) \\
+8 & 10/12 - 10/15 & Midterm Exam.  FALL BREAK (F) \\
 \hline
-9 & 10/21 - 10/23 & FALL BREAK (M,Tu) \\
+9 & 10/21 - 10/23 & FALL BREAK (M,Tu). \\
 \hline
 10 & 10/26 - 10/30 &  \\
 \hline
-11 & 11/2 - 11/6 & \\
+11 & 11/2 - 11/6 & Interp 4. Quiz 2.\\
 \hline
-12 & 11/9 - 11/13 &  \\
+12 & 11/9 - 11/13 &  Paper Due.\\
 \hline
-13 & 11/16 - 11/20 & \\
+13 & 11/16 - 11/20 & Paper Peer-Review Due. Interp 5.\\
 \hline
-14 & 11/23 - 11/24 &  THANKSGIVING BREAK (W-F).   \\
+14 & 11/23 - 11/24 &  Paper Presentations. THANKSGIVING BREAK (W-F).   \\
 \hline
-15 & 11/30 - 12/4 & \\ 
+15 & 11/30 - 12/4 & Interp 6. Quiz 3. \\ 
 \hline
 16 & 12/7 - 12/9 &   Reading Day (Th). \\
 \hline
