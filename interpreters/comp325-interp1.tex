@@ -1,0 +1,62 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{setspace}
+
+
+\setlength{\textheight}{9in} \setlength{\topmargin}{-.5in}
+\setlength{\textwidth}{6.5in} \setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+
+\title{COMP 325 \\ Language 1 : Now with more calculation}
+\author{ James \textit{Logan} Mayfield }
+\date{Fall 2015}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+Your first interpreter is an extension of the basic calculator language developed in chapters 12 and 13 of PAPL. The extensions are primarily designed to get you moving with the basics of language design and development with Pyret before we get into more advanced languages.
+\end{abstract}
+
+\begin{center}
+\textbf{Due Wednesday, 9/16}
+\end{center}
+
+Your first parser, desugarer, and interpreter assignment is an extension of the \textit{Arith} language given in the book and discussed in class.  
+\begin{enumerate}
+\item Boring Minimal Extensions (Do all)
+\begin{enumerate}
+\item Extend the language to include binary subtraction, unary negation, division, and modulo operators.
+\item Extend the language to include the multiplicative inverse ($x ^{-1}$) and an absolute value function.
+\item Catch syntax and run-time errors and return descriptive and helpful error messages. Do not let the host language (Pyret) catch and report errors. 
+
+\end{enumerate}
+\item More of the same Snooze-ville code (Do at least one)
+\begin{enumerate}
+\item Extend the language to include the natural logarithm ($\ln$), base 10 logarithm ($\log$), and the base 2 logarithm ($\lg$).
+\item Extend the language to include an exponentiation operation ($x^y$), the exponential function ($e^x$), and an $n^{th}$ root operation.
+\end{enumerate}
+
+\end{enumerate}
+
+
+\section{Requirements}
+
+Your code must:
+\begin{itemize}
+\item Be well documented and tested (Statements of purpose for all procedures. All functions annotated to provide explicit signatures, all functions include a where block with tests achieving full coverage.)
+\item Make good, appropriate use of desugaring. 
+\item Use good style (i.e. naming, indentation, spacing, \textit{use of helper procedures})
+\item Not line wrap when printed
+\end{itemize}
+
+You must submit:
+\begin{itemize}
+\item A printed copy of your source document(s) in class
+\item Soft copy of your source document(s) upon request.
+\end{itemize}
+
+
+\end{document}
