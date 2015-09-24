@@ -1,0 +1,52 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{setspace}
+
+
+\setlength{\textheight}{9in} \setlength{\topmargin}{-.5in}
+\setlength{\textwidth}{6.5in} \setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+
+\title{COMP 325 - Interpreter 2- Functional Boolean Arithmetic}
+\author{  }
+\date{Fall 2015}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Your second interpreter still involves a single data type but includes Functions and Conditionals.  In addition to implementing the language, you're asked to write a small 
+\end{abstract}
+
+\begin{center}
+\textbf{Due Tuesday, 10/6}
+\end{center}
+
+For this interpreter we'll be building a functional language for boolean arithmetic and then consider its usage for expressing and simulating boolean logic circuits.  
+
+Your language will provide:
+\begin{itemize}
+\item The unary \textit{not} operator
+\item The $n$-ary versions of the operators \textit{and}, \textit{or}, \textit{xor}, \textit{nor}, \textit{nand}, \textit{xnor}
+\item A multi-branch conditional expression a la \textit{if elseif ... else} or Racket/Scheme \textit{cond}
+\item n-ary functions 
+\end{itemize}
+
+Once you've completed the language, use it to write a program to carry out an adder circuit.
+
+\subsection{Implementation Notes}
+
+You have many issues to deal with and choices to make as the language implementer. We'll discuss some of them in class. Many of them are also addressed in the text. 
+\begin{itemize}
+\item Conditional Expression Syntax (cond-like or more if...elseif like?)
+\item $n$-ary operators and conditionals as sugar 
+\item Universality of key sets of binary operators: \textit{\{xor,and\}}, \textit{\{and,or,not\}}, \textit{\{nand\}}, and more!
+\item Short-circuiting operators
+\item Lazy vs Eager evaluation
+\item Efficient Substitution via Environments
+\end{itemize}
+
+
+
+\end{document}
