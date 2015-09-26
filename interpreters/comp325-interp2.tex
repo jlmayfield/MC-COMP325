@@ -1,7 +1,7 @@
 \documentclass[10pt]{article}
 \usepackage{amsmath}
 \usepackage{setspace}
-
+\usepackage{hyperref}
 
 \setlength{\textheight}{9in} \setlength{\topmargin}{-.5in}
 \setlength{\textwidth}{6.5in} \setlength{\oddsidemargin}{0in}
@@ -23,7 +23,7 @@ Your second interpreter still involves a single data type but includes Functions
 \textbf{Due Tuesday, 10/6}
 \end{center}
 
-For this interpreter we'll be building a functional language for boolean arithmetic and then consider its usage for expressing and simulating boolean logic circuits.  
+For this interpreter we'll be building a functional language for boolean arithmetic and then consider its usage for expressing and simulating boolean logic circuits. 
 
 Your language will provide:
 \begin{itemize}
@@ -33,18 +33,43 @@ Your language will provide:
 \item n-ary functions 
 \end{itemize}
 
-Once you've completed the language, use it to write a program to carry out an adder circuit.
+Once you've completed the language, use it to write a program to carry out a moderately involved digital logic circuit or boolean formula. I recommend doing something like a 4-bit adder. The catch with the adder is that you'll have to write 5 circuit procedures, one for each bit and one for the carry, because our language can't operate on arrays of bits. If you're not familiar adders, try looking here: \url{https://en.wikipedia.org/wiki/Adder_(electronics)}.  The goal is to get some feel for the pragmatics of your language and better understand it from the user's perspective.  If you're not feeling the adder, you can find lots of similar circuits but looking for \textit{digit logic circuits} on Google web and image search.
 
 \subsection{Implementation Notes}
 
-You have many issues to deal with and choices to make as the language implementer. We'll discuss some of them in class. Many of them are also addressed in the text. 
+You have many issues to deal with and choices to make as the language implementer. We'll discuss some of them in class. Many of them are also addressed in the text. Here are a few key notes:
 \begin{itemize}
-\item Conditional Expression Syntax (cond-like or more if...elseif like?)
-\item $n$-ary operators and conditionals as sugar 
-\item Universality of key sets of binary operators: \textit{\{xor,and\}}, \textit{\{and,or,not\}}, \textit{\{nand\}}, and more!
-\item Short-circuiting operators
+\item Language Usage Patterns
+\newline
+We should give some thought to the means by which a user interacts with our language. This is a bit forced given the bootstrapping we're doing on Pyret, but we can still capture the essence of how our language might be used.  
+One option is very script-like. Users intend to execute a specific expression and write a series of function definitions to help abstract away elements of the expression. This is fine for fixed expressions but requires that the program be re-written if you wish to carry out different computations. 
+Another usage paradigm is the main function. Users write only function definitions, one of which must be for a function named \textit{main}.  Executing the program then means executing main. This later option lets us think about CLI like programs that accept arguments when they're executed.  
+You'll be given a starter file that gives you a structure in which both of these programming practices can be utilized.
+
+\item Parser Errors
+\newline
+You do not have to strive for high-quality, helpful error messages in the parser, but you still need to catch all the errors yourself.  
+
+\item Conditional Expression Syntax 
+\newline 
+There are lots of standard syntax options available for multi-branch conditionals. You can use the \textit{if},\textit{else if}, and \textit{else} keywords or something like the \textit{cond} from BSL Racket \url{http://docs.racket-lang.org/htdp-langs/beginner.html}.  In all cases the multi-branch conditional can be desugared to the standard \textit{if}..\textit{then}..\textit{else} two-way branch. 
+
+\item Desugaring $n$-ary boolean operators
+\newline
+An $n$-ary operator can often be desugared to nested binary operators. Doing so requires a strict binary version of the operator in the target language. We've also seen that some boolean operators can be desugared to short-circuiting conditionals. With this language you can go both ways. 
+
+ 
+\item Desugaring to Universal sets of binary operators: \textit{\{xor,and\}}, \textit{\{and,or,not\}}, \textit{\{nand\}}, etc.
+\newline
+There are several subsets of the binary operators that can be used to represent all the binary operators. This presents us with a clear desugaring option similar to what we had in the last interpreter. 
+
 \item Lazy vs Eager evaluation
+\newline
+You can try your hand at either an Eager or Lazy language. Just document your choice and realize that it will impact your tests and some data definitions.
+
 \item Efficient Substitution via Environments
+\newline
+You must do substitution using the efficient, \textit{environment} based substitution process discussed in the text. 
 \end{itemize}
 
 
