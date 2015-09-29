@@ -33,7 +33,7 @@ Your language will provide:
 \item n-ary functions 
 \end{itemize}
 
-Once you've completed the language, use it to write a program to carry out a moderately involved digital logic circuit or boolean formula. I recommend doing something like a 4-bit adder. The catch with the adder is that you'll have to write 5 circuit procedures, one for each bit and one for the carry, because our language can't operate on arrays of bits. If you're not familiar adders, try looking here: \url{https://en.wikipedia.org/wiki/Adder_(electronics)}.  The goal is to get some feel for the pragmatics of your language and better understand it from the user's perspective.  If you're not feeling the adder, you can find lots of similar circuits but looking for \textit{digit logic circuits} on Google web and image search.
+Once you've completed the language, use it to write a program to carry out program for simulating the results of a 4-bit adder (see below).
 
 \subsection{Implementation Notes}
 
@@ -72,6 +72,70 @@ You can try your hand at either an Eager or Lazy language. Just document your ch
 You must do substitution using the efficient, \textit{environment} based substitution process discussed in the text. 
 \end{itemize}
 
+\section{4-Bit Adder Program}
 
+Full-Adder circuits compute the sum and carry of two bits.  They can be combined to do general addition of binary numbers. We want to carry out 4-bit addition. Given two 4-bit numbers, a 4-bit adder computes the resultant 4-bit sum and a single carry bit. Our language only supports functions that produce a single bit output, so we must tweak the 4-bit adder to account for this. The boolean arithmetic of the full-adder is given on wikipedia along with a diagram for the 4-bit adder that should help \url{https://en.wikipedia.org/wiki/Adder_(electronics)}. 
+
+Write your program in the \textit{main} function style such that main takes as arguments 11 bits. The first four bits are the first input to the adder and the second 4 are the second input. The last 3 bits determine the output of the program. If they are binary 0, then output the least significant bit of the sum, if they are 1 output the second least significant, and so on. If they are 4 to 7, then output the carry bit. Here's some tests to illustrate. Assume \textit{prog} is the string form of the program.
+
+\begin{verbatim}
+
+check "4bit adder":
+	   prog = ...
+   
+   ## sum of 15+3 in least to greatest bit order
+   run-main(prog,[list: 1,1,1,1, 0,0,1,1, 0,0,0]) is 0
+   run-main(prog,[list: 1,1,1,1, 0,0,1,1, 0,0,1]) is 1
+   run-main(prog,[list: 1,1,1,1, 0,0,1,1, 0,1,0]) is 0
+   run-main(prog,[list: 1,1,1,1, 0,0,1,1, 0,1,1]) is 0   
+   ## carry of 15+3   
+   run-main(prog,[list: 1,1,1,1, 0,0,1,1, 1,0,0]) is 1  
+   run-main(prog,[list: 1,1,1,1, 0,0,1,1, 1,1,0]) is 1   
+
+end
+
+\end{verbatim}
+
+It's useful to note that you can do multi-line strings in Pyret by surrounding the string with  \`{}\`{}\`{} (the key usually next 1, not apostrophe). This makes writing your program a bit easier as you can break it across lines. Here's a Pyret test that demonstrates some key properties of multi-line strings.
+
+\begin{verbatim}
+check:
+  ## the newlines don't break s-expression reading
+  S.read-s-exp(
+  ``` 
+  (this is 
+  a string)
+  ```
+  )
+  is
+  S.read-s-exp("(this is a string)")
+  
+  ## the newlines are added to the string
+  ## the spacing around the line break is added to the string
+  ## but leading and trailing white space is ignored
+  
+  ## a rare case of not indenting!
+  ``` 
+  (this is
+a string)
+  ```
+  is
+  "(this is\na string)"
+  
+  ## space at the break
+   ``` 
+  (this is
+  a string)
+  ```
+  is
+  "(this is\n  a string)"
+  
+  ## leading space
+   ```  (this is
+a string)   ```
+  is
+  "(this is\na string)"
+end
+\end{verbatim}
 
 \end{document}
