@@ -138,4 +138,24 @@ a string)   ```
 end
 \end{verbatim}
 
+\section{Extra Challenge}
+
+Allowing $n$-ary functions introduces a few other issues to function application semantics.  These things are required, but you're strongly encouraged to incorporate them in your language. They'll probably be required in the future.
+
+\begin{itemize}
+\item \textit{Language Keyword Protection} \\
+Programmers should not name functions or identifiers after keywords used by the language. If I name a function \textit{xor}, then nothing good will happen. If the name of my function argument is \textit{true} and that's also a boolean literal, then how do we parse this? We should verify that all the programmer specified names in our programs do not conflict with the operator names and other keywords of our language. 
+
+\item \textit{Argument Checking functions} \\
+Functions expect a specific number of arguments and when they're not given that number it's an error. Our current language allows us to check this as a static property of the program. Prior to the interpreter, during parsing or before desugaring, we can check all function applications against their definitions in order to see if they are being given the correct number of arguments.  We could also check this at run-time.  
+
+\item \textit{Function Overloading} \\
+Overloading a function means providing more than one definition for the name with the caveat that the signature for each definition must be distinguishable for each function. In our current language, this means allowing multiple definitions where each definition allows a different number of arguments. We can have a unary, binary, and ternary \textit{foo} function. Clearly this capability requires a change to interpretation: we must now fetch \textit{all} the definitions for a given name and check each against the number of arguments being passed to that function.  
+
+\item \textit{Multiple Definitions} \\
+Programmers shouldn't provide more than one definition of a function. If there are two binary cases of a function named \textit{foo}, then which one did the programmer intend to call when she did \textit{(foo 0 1)}. 
+\end{itemize}
+
+
+
 \end{document}
