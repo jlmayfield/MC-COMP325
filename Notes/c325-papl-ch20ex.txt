@@ -1,0 +1,44 @@
+Ex 1:
+Why does it matter whether begin evaluates its sub-terms
+in some particular, specified order? Does it matter what this order is?
+
+Ex 2:
+Define begin by desugaring into let (and hence into anonymous functions).
+
+Ex 3:
+Convert initial examples/tests into ExprC and reformulate as
+interp tests. (Note this requires some by-hand let desugaring)
+
+Ex 4:
+Reformulate interp so that the stateful function new-loc()
+is no longer needed.
+
+Ex 5:
+Implement the other version of store alteration, whereby we update an existing
+binding and thereby avoid multiple bindings for a location in the store.
+
+Ex 6:
+When we look for a location to override the value stored at it, can the
+location fail to be present? If so, write a program that demonstrates this.
+If not, explain what invariant of the interpreter prevents this from
+happening.
+
+Ex 7:
+It’s a useful exercise to try to limit the use of store locations only to
+boxes. How many changes would you need to make?
+
+Ex 8:
+Read 20.3.6 Carefully!
+
+Ex 9:
+Write a program that generates "garbage" (see (3) from Ex. 8) and
+Clearly identify that Garbage
+
+Ex 10:
+Go through the interpreter; replace every reference to an updated store with a
+reference to one before update; make sure your test cases catch all the
+introduced errors! (Write tests if you don't have them) (See (4-5) from Ex 8)
+
+Ex 11:
+Augment the language with the journal features of software transactional memory.
+(See (6) from Ex 8)

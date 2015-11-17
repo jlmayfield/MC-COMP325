@@ -1,0 +1,120 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+\setlength{\textheight}{9in} \setlength{\topmargin}{-.5in}
+\setlength{\textwidth}{6.5in} \setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+
+\title{COMP 325 - Interpreter 4 - Stateful-Lists}
+\author{  }
+\date{Fall 2015}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For your fourth interpreter you get to skip the parser and work solely on the desugar and interp functions. We'll also set aside the user-interface to the language and not worry about how language users interact with these core functions. This includes ignoring the presence of top-level definitions. Your only concern is the desugaring and interpretation of expressions.
+
+The main feature you're exploring with this assignment is the extension of the mutable box idea to a mutable pair. This extension allows us to capture the basis of mutable Lisp-like lists and linked-list like structures in general. Welcome back data-structures!
+\end{abstract}
+
+\subsection*{Expressions}
+
+The language should support the following expressions in the extended language. 
+\begin{itemize}
+\item Binary Arithmetic: +,*,-,/,modulo
+\item Numeric Comparison: $==$, $<$, $>$
+\item Boolean Operators: and,or,not (binary \textit{and} and \textit{or}. unary \textit{not})
+\item Basic \textit{if} expression
+\item First Class, n-ary Functions: lambda expressions
+\item A \textit{local} expression that is equivalent to letrec with multiple identifier bindings, i.e. it allows multiple (possibly) recursively local identifiers.
+\item A null-type value \textit{NIL} 
+\item A mutable cons cell with the following:
+\begin{itemize}
+\item \textit{car} to select the first, and \textit{cdr} to select the second
+\item \textit{set-car} to modify the first, and \textit{set-cdr} to modify the second
+\end{itemize}
+\item \textit{is-cons} predicate to determine if a value is a cons cell or not
+\item \textit{is-null} predicate to determine if a value is null or not
+\end{itemize}
+
+\subsection*{Semantics}
+
+Not much new is happening with the numeric and boolean operators other than adjusting for store-based interpretation. Use desugaring where possible and be certain that boolean operators short circuit. Functions in this language are strict in the number of arguments that they can take. No currying, no partial evaluation, n-ary functions in the core. The \textit{local} expression is exactly the same as letrec and should similarly be desugared down to a single identifier binding form in the core. The \textit{cons} pair is a natural extension to two elements of the single element box we studied in class. More details about \textit{cons} are given below.
+
+The interpreter should continue to use the environment to manage identifier scoping issues but now  manage value storage and mutation through the store as discussed in chapter 20 and in class. To ensure separation of addressing state between tests, you may use either the interpreter constructor design we used in class or the functional equivalent discussed in an exercise from chapter 20. Whatever you decide, logically independent tests should not have any kind of dependency due to the store/state implementation. 
+
+
+\subsubsection*{Cons and Lists}
+
+In our language, a \textit{cons cell} is a mutable pair. By including a \textit{null-typed value}, \textit{NIL}, along with this structure, we provide programmers the tools necessary for linked-list like data. The names we're choosing here are, as you know from the Lisp History paper, historical. The high-level semantics of each operation is discussed here, just in case you need a bit of a nudge or refresher:
+\begin{itemize}
+\item A \textit{null} type value can be used as a stand in for an empty list. In this language, that is it's only use we'll consider.  Historically, the keyword \textit{NIL} is used to express a null type value. The \textit{is-null} predicate recognizes a null type.
+\begin{verbatim}
+(is-null NIL) is true
+\end{verbatim}
+\item The \textit{cons} constructor function takes two arguments and builds a pair from them. So \textit{(cons 1 2)} is the pair containing 1 and 2. The predicate \textit{is-cons} recognizes a cons cell type value.
+\begin{verbatim}
+(is-cons (cons 1 2)) is true
+(is-cons 1) is false
+(is-cons false) is false
+(is-cons NIL) is false
+\end{verbatim}
+\item The selectors \textit{car} and \textit{cdr} are the equivalent of \textit{unbox}. 
+\begin{verbatim}
+(car (cons 1 2)) is 1
+(cdr (cons 1 2)) is 2
+\end{verbatim}
+\item The mutators \textit{set-car} and \textit{set-cdr} are the equivalent of \textit{setbox}
+\begin{verbatim}
+(local ( (c (cons 1 2)) )
+  (begin 
+    (set-car c 4)
+    (car c)))  
+is
+4 
+
+(local ( (c (cons 1 2)) )
+  (begin 
+    (set-cdr c 4)
+    (cdr c)))  
+is
+4 
+\end{verbatim}
+\end{itemize}
+
+\subsubsection*{Big-Picture Test}
+
+To do some big picture tests write up the following expression/program in its own check block
+and test that it produces the correct value. 
+\begin{verbatim}
+(local ( (sum (lambda (lst) 
+                 (if (is-null lst) 0
+                     (+ (car lst) (sum (cdr lst)))) ))
+    (sum (cons 1 (cons 2 (cons 3 (cons 4 NIL))))) )
+\end{verbatim}
+Consider writing up some similarly classic list-based programs (an instance of a map, other folds, a mutation-based for-each, etc.) as tests as well or use them to tease out unit tests for the interp and desugar functions and their helpers. Just because you're not building a complete system doesn't mean the end goal can't and shouldn't inspire you and inform your work.
+
+\subsection*{Logistics}
+
+For this assignment you only need to write the expression desugarer , interpreter, and any necessary helpers for those functions. No parser, no top-level definition handlers, no user-interface (i.e. run) function. The completed assignment is due on \textbf{12/1}. The grade is determined as follows:
+
+\begin{center}
+\begin{tabular}{ll}
+Area & Points \\ \hline
+Interp & 25 \\
+Desugar & 20 \\
+Data Definitions & 10 \\
+Big Picture Test & 5 \\
+Style and Comments & 5 \\ \hline
+ & 65 total
+\end{tabular}
+\end{center}
+
+You are expected to have all required expressions represented in all parts of your design. If it's not there and at least stubbed, then you lose points. At this point we should be able to lay out the skeleton of top level cases. Sufficiency of testing is covered for the section your testing. The core language should be as minimal as possible without going overboard. The quality of your sugar versus non-sugar choices will be evaluated as part of your Data Definitions grade. The style and comment part of your grade accounts for good coding practices like proper indentation, avoiding printed line wrapping, good identifier and function names, documentation, and commenting of logic. 
+
+
+\end{document}
